@@ -3,7 +3,25 @@ import './App.css';
 
 function App() {
   return (
-    <h1>CRUD APP</h1>
+  
+    <div className='App'>
+      <h1>CRUD APPLICATION</h1>
+
+      <div className='form'>
+        <label>Cake Name</label>
+        <input type="text" name="cakeName"/>
+
+        <label>Cake Rating</label>
+        <input type="text" name="rating"/>
+
+        <button>Submit</button>
+
+      </div>
+
+      
+
+    </div>
+
   );
 }
 
