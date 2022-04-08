@@ -1,17 +1,17 @@
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './App.css';
-import Axios from 'axios';
+import axios from 'axios'; //axios library connects to backend
 
 function App() {
 
-  const [cakeName, setCakeName] = useState('')
-  const [review, setReview] = useState('')
+  const [cakeName, setCakeName] = useState('');
+  const [cakeReview, setReview] = useState('');
 
   const submitReview = () => {
-    Axios.post('http://localhost:3001/api/insert', {
+    axios.post('http://localhost:3001/api/insert', {
       cakeName: cakeName, 
-      cakeReview: review,
+      cakeReview: cakeReview,
     }).then(()=>{
       alert("successful insert!");
     });
