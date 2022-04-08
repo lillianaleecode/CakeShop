@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import Axios from 'axios';
 
@@ -9,7 +9,12 @@ function App() {
   const [review, setReview] = useState('')
 
   const submitReview = () => {
-    Axios.post('http://localhost:3000/');
+    Axios.post('http://localhost:3001/api/insert', {
+      cakeName: cakeName, 
+      cakeReview: review,
+    }).then(()=>{
+      alert("successful insert!");
+    });
 
   }
 
