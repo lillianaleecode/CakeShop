@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import axios from 'axios'; //axios library connects to backend
 
@@ -7,7 +7,17 @@ function App() {
 
   const [cakeName, setCakeName] = useState('');
   const [cakeReview, setReview] = useState('');
+  const [cakeReviewList, setCakeList] = useState([]); //set as [] as map function only allows array
 
+  //GET DATA FROM DATABASE
+  useEffect(() => {
+    axios.get('http://localhost:3001').then((response) => {
+      console.log(response.data);
+      setCakeList(response.data);
+    });
+  }, []);
+
+  //INSERT DATA FROM SUBMIT BUTTON
   const submitReview = () => {
     axios.post('http://localhost:3001/api/insert', {
       cakeName: cakeName, 
@@ -36,7 +46,19 @@ function App() {
 
         }}/>
 
+
+
         <button onClick={submitReview}>Submit</button>
+
+
+        {cakeReviewList.map((val, key) => {
+          return <h1> Cake Awesome name: {val.name} | Cake Review: {val.review} |</h1>;
+
+        })}
+
+
+        
+        
 
       </div>
 
