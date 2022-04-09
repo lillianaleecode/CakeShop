@@ -52,7 +52,23 @@ function App() {
 
 
         {cakeReviewList.map((val, key) => {
-          return <h1> Cake Awesome name: {val.name} | Cake Review: {val.review} |</h1>;
+          return (
+            <div className='card'>
+              <h1> Cake Awesome name: {val.name} </h1>
+              <p>| Cake Review: {val.review} </p>
+
+            
+              <input type="text" id="updateInput" />
+
+              <button>Update</button>
+
+              <button>Delete</button>
+              
+
+
+            </div>
+          )
+          
 
         })}
 
