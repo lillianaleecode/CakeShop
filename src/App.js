@@ -14,6 +14,7 @@ function App() {
     axios.get('http://localhost:3001').then((response) => {
       console.log(response.data);
       setCakeList(response.data);
+      console.log("error setcakelist") 
     });
   }, []);
 
@@ -23,7 +24,14 @@ function App() {
       cakeName: cakeName, 
       cakeReview: cakeReview,
     }).then(()=>{
-      alert("successful insert!");
+      console.log("submit review");
+      setCakeList([
+        ...cakeReviewList,
+        {name: cakeName, 
+          review: cakeReview}
+
+        ])
+      
     });
 
   }
@@ -52,10 +60,12 @@ function App() {
 
 
         {cakeReviewList.map((val, key) => {
+          console.log("cakereviewlist alert");
           return (
             <div className='card'>
               <h1> Cake Awesome name: {val.name} </h1>
               <p>| Cake Review: {val.review} </p>
+              <span>{key}</span>
 
             
               <input type="text" id="updateInput" />
