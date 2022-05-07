@@ -35,6 +35,10 @@ function App() {
     });
 
   }
+ //DELETE DATA
+  const deleteReview = (cakeName) => {
+    axios.delete(`http://localhost:3001/api/delete/${cakeName}`);
+  }
 
   return (
   
@@ -60,7 +64,7 @@ function App() {
 
 
         {cakeReviewList.map((val, key) => {
-          console.log("cakereviewlist alert");
+          console.log("get cakereviewlist alert");
           return (
             <div className='card'>
               <h1> Cake Awesome name: {val.name} </h1>
@@ -72,7 +76,7 @@ function App() {
 
               <button>Update</button>
 
-              <button>Delete</button>
+              <button onClick={() => {deleteReview(val.cakeName)}}>Delete</button>
               
 
 
